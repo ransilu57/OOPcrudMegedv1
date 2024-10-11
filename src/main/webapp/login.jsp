@@ -48,7 +48,7 @@
 
     .login-container input[type="text"],
     .login-container input[type="password"] {
-        width: 85%; /* Adjusting width for centering */
+        width: 85%;
         padding: 15px;
         margin: 15px 0;
         border: none;
@@ -73,7 +73,7 @@
     }
 
     .login-container input[type="submit"] {
-        width: 50%; /* Adjusting width for centering */
+        width: 50%;
         padding: 15px;
         border: none;
         border-radius: 25px;

@@ -4,39 +4,37 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.schoolmanagement.bean.DBConnect;
 import com.schoolmanagement.bean.Request;
-import com.schoolmanagement.bean.Student;
+//import com.schoolmanagement.bean.Student;
 
 
 public class RequestDAO {
 	
 	private static Connection con = null;
-	private static Statement stmt= null;
+	//private static Statement stmt= null;
 	private static ResultSet rs = null;
 	
 
 	private static final String INSERT_REQUESTS_SQL = "INSERT INTO scholrequest (sid, type, description) VALUES  (?, ?, ?)";
 
 	private static final String SELECT_REQUEST_BY_ID = "select * from scholrequest where id =?";
-	//private static final String SELECT_ALL_REQUESTS = "select * from scholrequest where id =?";
+	
 	private static final String DELETE_REQUESTS_SQL = "delete from scholrequest where id = ?;";
 	private static final String UPDATE_REQUESTS_SQL = "update scholrequest set sid = ?,type= ?, description =? where id = ?;";
 
-	//public RequestDAO() {
-	//}
 	
 
 
 	public void insertRequest(Request request) throws SQLException {
 		
 		con = DBConnect.getInstance().getConnection();
-		stmt = con.createStatement();
+		//stmt = con.createStatement();
 		System.out.println(INSERT_REQUESTS_SQL);
 		
 		try (
@@ -56,7 +54,7 @@ public class RequestDAO {
 	public Request selectRequest(int id) throws SQLException {
 		Request request = null;
 		con = DBConnect.getInstance().getConnection();
-		stmt = con.createStatement();
+		//stmt = con.createStatement();
 		
 		
 		
@@ -125,7 +123,7 @@ public class RequestDAO {
 	public boolean deleteRequest(int id) throws SQLException {
 		boolean rowDeleted;
 		con = DBConnect.getInstance().getConnection();
-		stmt = con.createStatement();
+		//stmt = con.createStatement();
 		
 		try (
 				
@@ -141,7 +139,7 @@ public class RequestDAO {
 		boolean rowUpdated;
 		
 		con = DBConnect.getInstance().getConnection();
-		stmt = con.createStatement();
+		//stmt = con.createStatement();
 		
 		try (
 			PreparedStatement statement = con.prepareStatement(UPDATE_REQUESTS_SQL);) {

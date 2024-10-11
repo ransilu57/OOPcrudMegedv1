@@ -91,7 +91,7 @@
             font-size: 1.2em;
         }
 
-        /* Table styling */
+        
         table {
             background-color: rgba(210, 222, 224, 0.9);
             border-radius: 5px;
@@ -120,7 +120,7 @@
             background-color: #f3f3f6;
         }
 
-        /* Edit and Delete button styling */
+        
         .btn-edit {
             background-color: #040452;
             color: rgb(246, 247, 246);

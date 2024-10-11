@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
+//import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,10 +70,10 @@ public class RequestServlet extends HttpServlet {
 		List<Request> listRequest;
 		
 		if (sid != null) {
-	        listRequest = requestDAO.selectAllRequests(sid); // Fetch requests for the logged-in user
+	        listRequest = requestDAO.selectAllRequests(sid); 
 	    } else {
 	    	 request.setAttribute("message", "You have no requests yet. Please create a new request.");
-	            request.getRequestDispatcher("new-form.jsp").forward(request, response); // Forward to the new request page
+	            request.getRequestDispatcher("new-form.jsp").forward(request, response); 
 	            return;	    }
 		
 		request.setAttribute("listRequest", listRequest);
@@ -93,7 +93,7 @@ public class RequestServlet extends HttpServlet {
 		
 		Request existingUser = requestDAO.selectRequest(id);
 		
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("request-form.jsp");
+		
 		request.setAttribute("request", existingUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("request-form.jsp");
 		dispatcher.forward(request, response);
