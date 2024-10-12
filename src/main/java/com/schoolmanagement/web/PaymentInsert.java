@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,6 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.schoolmanagement.dao.PaymentDbUtil;
+
+
 
 @WebServlet("/payment")
 public class PaymentInsert extends HttpServlet {

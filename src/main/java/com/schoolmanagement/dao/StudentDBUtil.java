@@ -1,8 +1,10 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.schoolmanagement.bean.DBConnect;
 
 public class StudentDBUtil {
 	

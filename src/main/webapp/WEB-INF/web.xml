@@ -11,7 +11,7 @@
   
         <servlet>
            <servlet-name>login</servlet-name>
-           <servlet-class>com.schoolmanagement.bean.LoginServlet</servlet-class>
+           <servlet-class>com.schoolmanagement.web.LoginServlet</servlet-class>
          </servlet>
          
          <servlet-mapping>

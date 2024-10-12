@@ -71,14 +71,17 @@ public class RequestServlet extends HttpServlet {
 		
 		if (sid != null) {
 	        listRequest = requestDAO.selectAllRequests(sid); 
+	        request.setAttribute("listRequest", listRequest);
+	        
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("request-list.jsp");
+			dispatcher.forward(request, response);
 	    } else {
 	    	 request.setAttribute("message", "You have no requests yet. Please create a new request.");
 	            request.getRequestDispatcher("new-form.jsp").forward(request, response); 
 	            return;	    }
 		
-		request.setAttribute("listRequest", listRequest);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("request-list.jsp");
-		dispatcher.forward(request, response);
+		//request.setAttribute("listRequest", listRequest);
+		
 	}
 //-----------------------------------------------
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)

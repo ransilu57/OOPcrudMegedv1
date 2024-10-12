@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.schoolmanagement.bean.Request;
 import com.schoolmanagement.dao.RequestDAO;
+import com.schoolmanagement.dao.StudentDBUtil;
 
 
 @WebServlet("/LoginServlet")
@@ -41,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("stdDetails", stdDetails);
-			RequestDispatcher dis = request.getRequestDispatcher("request-list.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("Dashboard.jsp");
 			dis.forward(request, response);
 		}
 		else {
@@ -50,6 +52,7 @@ public class LoginServlet extends HttpServlet {
 			out.println("alert('Your username or password is incorrect !');");
 			out.println("location = 'login.jsp'");
 			out.println("</script>");
+			//out.println(isTrue);
 		}
 		
 	}

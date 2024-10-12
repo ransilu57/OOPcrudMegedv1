@@ -1,9 +1,12 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.dao;
 
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.schoolmanagement.bean.DBConnect;
+import com.schoolmanagement.bean.Payment;
 
 public class PaymentDbUtil {
 
@@ -14,7 +17,7 @@ public class PaymentDbUtil {
         String insertQuery = "INSERT INTO payments (student_id, payment_amount, payment_date, payment_method, " +
                              "payment_status, receipt_number, payment_reference, payment_notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DBConnect.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
              
             preparedStatement.setString(1, studentId);
@@ -37,7 +40,7 @@ public class PaymentDbUtil {
     // Method to check if a payment already exists in the database
     public static boolean isPaymentExists(String studentId, String paymentDate, String receiptNumber) {
         String selectQuery = "SELECT COUNT(*) FROM payments WHERE student_id = ? AND payment_date = ? AND receipt_number = ?";
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DBConnect.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
             preparedStatement.setString(1, studentId);
             preparedStatement.setString(2, paymentDate);
@@ -60,7 +63,7 @@ public class PaymentDbUtil {
                              "payment_status = ?, receipt_number = ?, payment_reference = ?, payment_notes = ? " +
                              "WHERE id = ?";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DBConnect.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 
             preparedStatement.setBigDecimal(1, paymentAmount);
@@ -84,7 +87,7 @@ public class PaymentDbUtil {
     public static boolean deletePayment(int paymentId) {
         String deleteQuery = "DELETE FROM payments WHERE id = ?";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DBConnect.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
 
             preparedStatement.setInt(1, paymentId);
@@ -96,18 +99,18 @@ public class PaymentDbUtil {
         }
     }
 
-    // Method to retrieve all payments from the database
+    
     public static List<Payment> getAllPayments() {
         List<Payment> payments = new ArrayList<>();
         String selectQuery = "SELECT * FROM payments";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection =DBConnect.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
                 Payment payment = new Payment();
-                payment.setId(resultSet.getInt("id")); // Assuming the column is payment_id
+                payment.setId(resultSet.getInt("id")); 
                 payment.setStudentId(resultSet.getString("student_id"));
                 payment.setPaymentAmount(resultSet.getBigDecimal("payment_amount"));
                 payment.setPaymentDate(resultSet.getString("payment_date"));
@@ -121,6 +124,6 @@ public class PaymentDbUtil {
         } catch (SQLException e) {
             System.err.println("Database error: " + e.getMessage());
         }
-        return payments; // Return the list of payments
+        return payments; 
     }
 }
