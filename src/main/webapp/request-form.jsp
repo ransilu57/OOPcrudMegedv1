@@ -22,6 +22,12 @@
             padding: 0;
         }
 
+    label{
+    
+    color:black;
+    
+    }
+    
 		
     input.readonly-sid {
     background-color: rgba(255, 255, 255, 0.5); 
@@ -92,7 +98,7 @@
 
         
         h2 {
-            color: rgba(255, 255, 255, 0.9); 
+            color: rgba(10, 10, 10, 0.9); 
             font-weight: 500;
             margin-bottom: 20px;
         }
