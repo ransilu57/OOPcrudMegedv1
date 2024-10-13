@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
+
 
 @WebServlet("/payment")
 public class PaymentInsert extends HttpServlet {
@@ -62,7 +65,7 @@ public class PaymentInsert extends HttpServlet {
             }
 
             // Check for existing payment
-            if (PaymentDbUtil.isPaymentExists(studentId, paymentDate, receiptNumber)) {
+            if (SchoolManagementDBUtil.isPaymentExists(studentId, paymentDate, receiptNumber)) {
                 request.setAttribute("errorMessage", "A payment with the same details already exists.");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
                 dispatcher.forward(request, response);
@@ -70,7 +73,7 @@ public class PaymentInsert extends HttpServlet {
             }
 
             // Insert payment into the database
-            boolean isInserted = PaymentDbUtil.insertPayment(studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
+            boolean isInserted = SchoolManagementDBUtil.insertPayment(studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
 
             // Forward to the appropriate JSP based on the result
             String targetJSP = isInserted ? "success.jsp" : "unsuccess.jsp";

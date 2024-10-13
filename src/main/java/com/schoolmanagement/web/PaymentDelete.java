@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
+
+
+
 
 @WebServlet("/PaymentDelete")
 public class PaymentDelete extends HttpServlet {
@@ -21,7 +27,7 @@ public class PaymentDelete extends HttpServlet {
             int paymentId = Integer.parseInt(paymentIdStr);
 
             // Delete payment from the database
-            boolean isDeleted = PaymentDbUtil.deletePayment(paymentId);
+            boolean isDeleted = SchoolManagementDBUtil.deletePayment(paymentId);
 
             // Redirect based on the result of deletion
             if (isDeleted) {

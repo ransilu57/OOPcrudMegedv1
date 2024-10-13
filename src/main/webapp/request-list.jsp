@@ -12,7 +12,7 @@
 	
 	 <style>
 	  body {
-            background: linear-gradient(to bottom, #90a8cb, #b99ee0); 
+            background: linear-gradient(to bottom, #ced3da, #c9b9df); 
             background-size: cover;
             height: 100vh;
             margin: 0;
@@ -72,7 +72,7 @@
 
 
         h3 {
-            color: rgba(255, 255, 255, 0.9); 
+            color: rgba(9, 9, 9, 0.9); 
             font-weight: 500;
             margin-bottom: 20px;
         }
@@ -157,9 +157,9 @@
 				<span class="navbar-brand">Request Management Application</span>
 			</div>
 
-			<ul class="navbar-nav ml-auto">
+			<!-- <ul class="navbar-nav ml-auto">
 				<li><a href="<%=request.getContextPath()%>/list" class="nav-link">Requests</a></li>
-			</ul>
+			</ul> -->
 		</nav>
 	</header>
 	<br>

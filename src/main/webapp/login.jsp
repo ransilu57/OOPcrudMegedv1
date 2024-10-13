@@ -7,7 +7,7 @@
 <title>Login</title>
 <style>
     body {
-        background: linear-gradient(to bottom, #6c8ec2, #b390e5); 
+        background: linear-gradient(to bottom, #85a3c8, #bcbbbd); 
         background-size: cover;
         height: 100vh;
         margin: 0;
@@ -33,7 +33,7 @@
     }
 
     .login-container h1 {
-        color: #ffffff;
+        color: black;
         margin-bottom: 30px;
         font-size: 2.5em;
         font-weight: 600;
@@ -53,8 +53,8 @@
         margin: 15px 0;
         border: none;
         border-radius: 10px;
-        background: rgba(255, 255, 255, 0.2); 
-        color: white;
+        background: rgba(241, 242, 242, 0.889); 
+        color: black;
         font-size: 1.1em;
         box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
@@ -62,7 +62,7 @@
 
     .login-container input[type="text"]::placeholder,
     .login-container input[type="password"]::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(2, 2, 2, 0.7);
         font-size: 1.1em;
     }
 

@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -8,6 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
+
+
+
 
 @WebServlet("/updatePayment")
 public class PaymentUpdate extends HttpServlet {
@@ -32,7 +38,7 @@ public class PaymentUpdate extends HttpServlet {
             int paymentId = Integer.parseInt(paymentIdStr); 
 
            
-            boolean isUpdated = PaymentDbUtil.updatePayment(paymentId, studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
+            boolean isUpdated = SchoolManagementDBUtil.updatePayment(paymentId, studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
 
             
             String targetJSP = isUpdated ? "paymentUpdateSuccessful.jsp" : "paymentUpdateUnsuccessful.jsp";

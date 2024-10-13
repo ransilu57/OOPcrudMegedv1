@@ -1,4 +1,4 @@
-package com.schoolmanagement.bean;
+package com.schoolmanagement.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.schoolmanagement.dao.RequestDAO;
+import com.schoolmanagement.bean.Request;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
 
 
 @WebServlet("/LoginServlet")
@@ -26,12 +28,13 @@ public class LoginServlet extends HttpServlet {
 		
 		String sid = request.getParameter("sid");
 		String password = request.getParameter("password");
+		//SchoolManagementDBUtil dbutil
 		
-		boolean isTrue = StudentDBUtil.validate(sid, password);
+		boolean isTrue = SchoolManagementDBUtil.validate(sid, password);
 		
 		if(isTrue == true) {
 			request.getSession().setAttribute("sid", sid);
-			RequestDAO obj = new RequestDAO();
+			SchoolManagementDBUtil obj = new SchoolManagementDBUtil();
 			List<Request> stdDetails = null;
 			
 			try {
@@ -41,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("stdDetails", stdDetails);
-			RequestDispatcher dis = request.getRequestDispatcher("request-list.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("Dashboard.jsp");
 			dis.forward(request, response);
 		}
 		else {
@@ -50,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 			out.println("alert('Your username or password is incorrect !');");
 			out.println("location = 'login.jsp'");
 			out.println("</script>");
+			//out.println(isTrue);
 		}
 		
 	}
