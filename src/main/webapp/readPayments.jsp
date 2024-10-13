@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.schoolmanagement.dao.PaymentDbUtil" %>
+<%@ page import="com.schoolmanagement.dao.SchoolManagementDBUtil" %>
 <%@ page import="com.schoolmanagement.bean.Payment" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +84,7 @@
             <th>Payment Notes</th>
         </tr>
         <%
-            List<Payment> payments = PaymentDbUtil.getAllPayments(); // Fetching all payment records
+            List<Payment> payments = SchoolManagementDBUtil.getAllPayments(); // Fetching all payment records
             if (payments != null && !payments.isEmpty()) {
                 for (Payment payment : payments) {
         %>
