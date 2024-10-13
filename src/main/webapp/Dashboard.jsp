@@ -16,7 +16,7 @@
             flex-direction: column;
         }
         .title-container {
-            background-color: #1a2b49; /* Dark blue */
+            background-color: #1a2b49; 
             width: 100%;
             padding: 20px 0;
             text-align: center;
@@ -35,7 +35,7 @@
         }
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(2, 200px); /* 2 tiles side by side */
+            grid-template-columns: repeat(3, 200px);
             gap: 20px;
         }
         .tile {
@@ -69,12 +69,12 @@
     </style>
 </head>
 <body>
-    <!-- Title Section -->
+    
     <div class="title-container">
         <h1>School Management System</h1>
     </div>
 
-    <!-- Centered Dashboard Section -->
+  
     <div class="dashboard-container">
         <div class="dashboard">
             <a href="<%=request.getContextPath()%>/list" class="tile">Scholarship Requests</a>
@@ -84,7 +84,7 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+   
     <footer>
         &copy; 2024 School Management System | Designed for educational purposes
     </footer>
