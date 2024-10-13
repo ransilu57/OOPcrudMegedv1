@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.schoolmanagement.bean.Request;
-import com.schoolmanagement.dao.RequestDAO;
-import com.schoolmanagement.dao.StudentDBUtil;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
 
 
 @WebServlet("/LoginServlet")
@@ -28,12 +28,13 @@ public class LoginServlet extends HttpServlet {
 		
 		String sid = request.getParameter("sid");
 		String password = request.getParameter("password");
+		//SchoolManagementDBUtil dbutil
 		
-		boolean isTrue = StudentDBUtil.validate(sid, password);
+		boolean isTrue = SchoolManagementDBUtil.validate(sid, password);
 		
 		if(isTrue == true) {
 			request.getSession().setAttribute("sid", sid);
-			RequestDAO obj = new RequestDAO();
+			SchoolManagementDBUtil obj = new SchoolManagementDBUtil();
 			List<Request> stdDetails = null;
 			
 			try {

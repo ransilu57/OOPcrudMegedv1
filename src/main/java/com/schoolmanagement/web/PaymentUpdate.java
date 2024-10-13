@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.schoolmanagement.dao.PaymentDbUtil;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
+
 
 
 
@@ -36,7 +38,7 @@ public class PaymentUpdate extends HttpServlet {
             int paymentId = Integer.parseInt(paymentIdStr); 
 
            
-            boolean isUpdated = PaymentDbUtil.updatePayment(paymentId, studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
+            boolean isUpdated = SchoolManagementDBUtil.updatePayment(paymentId, studentId, paymentAmount, paymentDate, paymentMethod, paymentStatus, receiptNumber, paymentReference, paymentNotes);
 
             
             String targetJSP = isUpdated ? "paymentUpdateSuccessful.jsp" : "paymentUpdateUnsuccessful.jsp";

@@ -13,16 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.schoolmanagement.bean.Request;
-import com.schoolmanagement.dao.RequestDAO;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
 
 
 @WebServlet("/")
 public class RequestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RequestDAO requestDAO;
+	private SchoolManagementDBUtil dbutil;
 	
 	public void init() {
-		requestDAO = new RequestDAO();
+		dbutil = new SchoolManagementDBUtil();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -70,7 +71,7 @@ public class RequestServlet extends HttpServlet {
 		List<Request> listRequest;
 		
 		if (sid != null) {
-	        listRequest = requestDAO.selectAllRequests(sid); 
+	        listRequest = SchoolManagementDBUtil.selectAllRequests(sid); 
 	        request.setAttribute("listRequest", listRequest);
 	        
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("request-list.jsp");
@@ -94,7 +95,7 @@ public class RequestServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		Request existingUser = requestDAO.selectRequest(id);
+		Request existingUser = dbutil.selectRequest(id);
 		
 		
 		request.setAttribute("request", existingUser);
@@ -109,7 +110,7 @@ public class RequestServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String description = request.getParameter("description");
 		Request newRequest = new Request(sid, type, description);
-		requestDAO.insertRequest(newRequest);
+		dbutil.insertRequest(newRequest);
 		response.sendRedirect("list");
 	}
 
@@ -121,14 +122,14 @@ public class RequestServlet extends HttpServlet {
 		String description = request.getParameter("description");
 
 		Request req = new Request(id, sid, type, description);
-		requestDAO.updateRequest(req);
+		dbutil.updateRequest(req);
 		response.sendRedirect("list");
 	}
 
 	private void deleteRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		requestDAO.deleteRequest(id);
+		dbutil.deleteRequest(id);
 		response.sendRedirect("list");
 
 	}

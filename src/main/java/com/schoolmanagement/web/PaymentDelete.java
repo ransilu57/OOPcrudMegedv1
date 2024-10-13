@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.schoolmanagement.dao.PaymentDbUtil;
+import com.schoolmanagement.dao.SchoolManagementDBUtil;
+
+
 
 
 
@@ -25,7 +27,7 @@ public class PaymentDelete extends HttpServlet {
             int paymentId = Integer.parseInt(paymentIdStr);
 
             // Delete payment from the database
-            boolean isDeleted = PaymentDbUtil.deletePayment(paymentId);
+            boolean isDeleted = SchoolManagementDBUtil.deletePayment(paymentId);
 
             // Redirect based on the result of deletion
             if (isDeleted) {
